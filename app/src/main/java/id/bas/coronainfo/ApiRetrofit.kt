@@ -9,9 +9,11 @@ import java.util.concurrent.TimeUnit
 class ApiRetrofit {
     companion object {
 
-        fun create(): ApiService {
+        fun create(baseUrl : String): ApiService {
 
             val BASEURL ="https://script.google.com/macros/s/AKfycbzctxBEOf7kp94IBYM0GVQOmIYVgAiTScj_6iKh9ITGh8m2MRLp/"
+
+
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -24,7 +26,7 @@ class ApiRetrofit {
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(BASEURL)
+                .baseUrl(baseUrl)
                 .client(httpClient)
                 .build()
             return retrofit.create(ApiService::class.java)

@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:fontFamily="@font/poppinsbold"
         android:layout_margin="10dp"
         android:id="@+id/tv_positif"
         android:layout_width="match_parent"
@@ -18,13 +19,13 @@
         android:textSize="20sp" />
 
     <TextView
+        style="@style/poplin"
         android:layout_margin="10dp"
         android:id="@+id/tv_meninggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Meninggal"
-        android:textColor="#FF5722"
-        android:textSize="20sp" />
+ />
 
     <TextView
         android:layout_margin="10dp"

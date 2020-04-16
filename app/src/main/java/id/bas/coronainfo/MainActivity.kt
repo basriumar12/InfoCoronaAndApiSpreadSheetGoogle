@@ -11,6 +11,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    val BASEURL ="https://script.google.com/macros/s/AKfycbzctxBEOf7kp94IBYM0GVQOmIYVgAiTScj_6iKh9ITGh8m2MRLp/"
+
 
     var id = "1EvpbuSl7rXFiD1th3Rru5PqHcHrk7AS0Y5L3LT8yZtw"
     var sheet = "corona"
@@ -22,13 +24,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        ApiRetrofit.create().getDataCorona(id,sheet).enqueue(object : Callback<ResponseCorona>{
+        ApiRetrofit.create(BASEURL).getDataCorona(id,sheet).enqueue(object : Callback<ResponseCorona>{
             override fun onFailure(call: Call<ResponseCorona>, t: Throwable) {
                 //untuk response error
 
                 Toast.makeText(this@MainActivity,"Error dapatkan data", Toast.LENGTH_LONG).show()
             }
-
             override fun onResponse(
                 call: Call<ResponseCorona>,
                 response: Response<ResponseCorona>

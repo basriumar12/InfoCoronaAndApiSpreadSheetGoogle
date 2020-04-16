@@ -8,4 +8,20 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="poplin" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/poppinsbold</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="contohStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">#E91E63</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/poppinsbold</item>
+
+    </style>
+
+
 </resources>
