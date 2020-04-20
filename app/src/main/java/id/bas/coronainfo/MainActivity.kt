@@ -3,8 +3,10 @@ package id.bas.coronainfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import id.bas.coronainfo.model.ResponseCorona
+import id.bas.coronainfo.model.ResponseGetById
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -20,7 +22,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getData()
+      getDataById()
+    }
+
+    private fun getDataById() {
+        progress_circular.visibility = View.VISIBLE
+        ApiRetrofit.create(BASEURL).getDataById("id","corona","4").enqueue(
+            object : Callback<ResponseGetById>{
+                override fun onFailure(call: Call<ResponseGetById>, t: Throwable) {
+                    progress_circular.visibility = View.GONE
+                    Toast.makeText(this@MainActivity,"Gagal terima data",Toast.LENGTH_LONG).show()
+                }
+
+                override fun onResponse(
+                    call: Call<ResponseGetById>,
+                    response: Response<ResponseGetById>
+                ) {
+                    progress_circular.visibility = View.GONE
+                    Toast.makeText(this@MainActivity,
+                        "Berhasil terima data ${response.body()?.positif}",Toast.LENGTH_LONG).show()
+                }
+            }
+        )
     }
 
     private fun getData() {

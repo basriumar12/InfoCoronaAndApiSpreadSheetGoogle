@@ -1,6 +1,7 @@
 package id.bas.coronainfo
 
 import id.bas.coronainfo.model.ResponseCorona
+import id.bas.coronainfo.model.ResponseGetById
 import id.bas.coronainfo.model.ResponseInsert
 import retrofit2.Call
 import retrofit2.http.GET
@@ -26,4 +27,12 @@ interface ApiService {
         @Query("sembuh")sembuh : String
 
     ) : Call<ResponseInsert>
+
+    @POST("exec")
+    fun getDataById (
+        @Query("action")action : String,
+        @Query("sheetName")sheetName : String,
+        @Query("no")id : String
+
+    ) : Call<ResponseGetById>
 }
